@@ -1,0 +1,371 @@
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --grey: #141414;
+  --grey-light: #3a3a3a;
+
+  --track-1: #58d2fa;
+  --track-2: #dff170;
+  --track-3: #a96bf0;
+  --track-4: #dcdbe4;
+  --track-5: #97fe65;
+  --track-6: #f0c73f;
+  --track-7: #fb879e;
+  --track-8: #9d9ca4;
+
+  --small-rad: 3px;
+  --big-rad: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+*::-webkit-scrollbar {
+  width: 0rem;
+}
+
+*::-webkit-scrollbar-thumb {
+  width: 0rem;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--black);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+}
+
+nav {
+  height: 5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+}
+
+button {
+  min-width: 2rem;
+  height: fit-content;
+  padding: 0.5rem;
+  margin: 0;
+  border-radius: var(--small-rad);
+  background-color: var(--grey);
+  border: none;
+  color: var(--white);
+  font-weight: 600;
+  transition: all 100ms ease-out;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--grey-light);
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--grey);
+}
+
+.logo {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.logo img {
+  width: 2rem;
+  height: 2rem;
+}
+
+#wrapper {
+  height: 100%;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  height: 100%;
+}
+
+.main .actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.sequencer-wrapper {
+  height: 80%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.track-wrapper {
+  display: flex;
+  gap: 1.5rem;
+  height: fit-content;
+  align-items: center;
+  justify-content: center;
+}
+
+.track-sound {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.track-sound h4 {
+  font-size: 0.6rem;
+  width: 5rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.track-sound button {
+  font-size: 0.6rem;
+}
+
+.track {
+  display: flex;
+  gap: 2rem;
+}
+
+.track-settings {
+  display: flex;
+  gap: 1rem;
+}
+
+.block {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.beat {
+  width: 1.5rem;
+  height: 4rem;
+  border-radius: var(--small-rad);
+  transition: all 100ms ease-out;
+  cursor: pointer;
+}
+
+.beat-track-1 {
+  background-color: var(--track-1);
+}
+.beat-track-2 {
+  background-color: var(--track-2);
+}
+.beat-track-3 {
+  background-color: var(--track-3);
+}
+.beat-track-4 {
+  background-color: var(--track-4);
+}
+.beat-track-5 {
+  background-color: var(--track-5);
+}
+.beat-track-6 {
+  background-color: var(--track-6);
+}
+.beat-track-7 {
+  background-color: var(--track-7);
+}
+.beat-track-8 {
+  background-color: var(--track-8);
+}
+
+.beat.beat-disabled {
+  background-color: var(--grey);
+}
+.beat.beat-active {
+  /* transform: scale(1.01); */
+  opacity: 0.7;
+}
+
+.beat.beat-disabled:hover {
+  background-color: var(--grey-light);
+}
+
+dialog {
+  border: none;
+  border-radius: 5px;
+  height: 30rem;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: none;
+  flex-direction: column;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+dialog .sounds::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+dialog .sounds::-webkit-scrollbar-thumb {
+  width: 0.5rem;
+  border-radius: var(--big-rad);
+  background-color: var(--grey);
+}
+
+dialog.show {
+  display: flex;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+dialog .sounds {
+  height: 90%;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+dialog .sound-list {
+  display: flex;
+  width: 20rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+dialog .sound {
+  cursor: pointer;
+  color: var(--white);
+  display: flex;
+  padding: 0.5rem;
+  width: 4rem;
+  height: 4rem;
+  font-size: 0.7rem;
+  border-radius: var(--small-rad);
+  background-color: var(--grey);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: all 100ms ease-out;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+dialog .sound:hover {
+  background-color: var(--grey-light);
+}
+
+dialog .input-wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+dialog .bpm-text,
+dialog .volume-text {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+dialog input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--grey);
+  border-radius: var(--big-rad);
+}
+
+dialog input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 1rem;
+  height: 1rem;
+  background: var(--white);
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+#save-modal {
+  height: fit-content;
+}
+
+#save-modal .input-wrapper {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+#save-modal .input-wrapper input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: var(--small-rad);
+  border: 1px solid var(--grey);
+}
+
+#save-modal .buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+#save-modal .buttons button {
+  width: 100%;
+}
+
+#load-modal {
+  height: 20rem;
+}
+
+#load-modal #beatmaps::-webkit-scrollbar {
+  width: 0.5rem;
+}
+
+#load-modal #beatmaps::-webkit-scrollbar-thumb {
+  width: 0.5rem;
+  border-radius: var(--big-rad);
+  background-color: var(--grey);
+}
+
+#load-modal #beatmaps {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  overflow-y: scroll;
+}
+
+#load-modal .beatmap {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+
+}
+
+#load-modal .beatmap .beatmap-actions{
+  display: flex;
+  gap: .0.5rem;
+}
+
